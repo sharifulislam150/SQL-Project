@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <style>
+    table {
+        margin: 40px auto;
+        width: 70%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    th, td {
+    border: 1px solid #000000b5;
+    padding: 10px 15px;
+    text-align: center;
+    }
+
+    th {
+    background-color: #080707;
+    font-weight: bold;
+    color: #fff;
+    }
+    tr:nth-child(even) {
+    background-color: #758fab;
+    }
+    button{
+        background-color: #398de6ef;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+    }
+    #adduser {
+        display: block;
+        margin: 30px auto 0 auto;
+        background: linear-gradient(90deg, #4e9af1 0%, #398de6ef 100%);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 32px;
+        font-size: 1.1em;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(73, 141, 230, 0.15);
+        cursor: pointer;
+        transition: background 0.3s, box-shadow 0.3s;
+        letter-spacing: 1px;
+    }
+
+    #adduser:hover {
+        background: linear-gradient(90deg, #0056b3 0%, #398de6ef 100%);
+        box-shadow: 0 6px 18px rgba(73, 141, 230, 0.25);
+    }
+    #delete_btn {
+        background-color: #e63946;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.2s;
+    }
+
+    #delete_btn:hover {
+        background-color: #b3001b;
+    }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+
+    
+
+    <h2>The totall Number of User are:<%= count %></h2>
+    <form action="/user/adduser" method="get">
+        <button id="adduser" >Add New User</button>
+    </form>
+    
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>User Name</th>
+            <th>Update User</th>
+            <th>Delete User</th>
+
+        </tr>
+       <% for(user of users){ %>
+        <tr>
+            <td> <%= user.id %> </td>
+            <td> <%= user.email %> </td>
+            <td> <%= user.username %> </td>
+            <td>
+                <form action="/user/<%= user.id %>/edit" method="get">
+                    <button>Edit UserName</button>
+                </form>
+            </td>
+            <td>
+                <form action="/user/<%= user.id %>/delete" method="get">
+                    <button id="delete_btn">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html>
+

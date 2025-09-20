@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+</head>
+<body>
+    <!-- Delete User -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(60,72,88,0.12);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        h2 {
+            color: #374151;
+            margin-bottom: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        input[name="password"] {
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        input[name="password"]:focus {
+            border-color: #6366f1;
+            outline: none;
+        }
+        #delete_btn {
+            background: #ef4444;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #delete_btn:hover {
+            background: #dc2626;
+        }
+    </style>
+    <div class="container">
+        <h2>Delete The user: <%= user.username %></h2>
+        <form action="/user/<%= user.id %>/?_method=DELETE" method="post">
+            <input placeholder="Enter the password" name="password" type="password" required>
+            <button id="delete_btn">Delete</button>
+        </form>
+    </div>
+</body>
+</html>
